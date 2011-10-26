@@ -1,0 +1,3 @@
+[submodule "Tartanator"]
+	path = Tartanator
+	url = git@github.com:lyzadanger/Tartanator.git
