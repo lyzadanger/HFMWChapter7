@@ -1,1 +1,0 @@
-../Tartanator/generate.php
