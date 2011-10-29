@@ -5,7 +5,7 @@
   <title>The Tartanator</title> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.css" />
-  <link ref="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
   <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
   <script type="text/javascript">
     // Need to bind to mobileinit before jQ mobile library is loaded
@@ -25,7 +25,7 @@
 
     <div data-role="content">  
     <script src="js/tartanator.js"></script>
-      <form id="tartanator_form">
+      <form method="post" action="generate.php" id="tartanator_form">
         <ul data-role="listview" id="tartanator_form_list">
           <li data-role="list-divider">Tell us about your tartan</li>
           <li data-role="fieldcontain">
@@ -92,7 +92,7 @@
 
         <ul data-role="listview" data-inset="true" id="colorlist">
         </ul>
-        
+
         <div data-role="fieldcontain">
           <input type="submit" name="buildtartan" id="buildtartan" value="Make it!" data-role="button" />
         </div>
