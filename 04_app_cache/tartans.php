@@ -21,7 +21,9 @@
   <script type="text/javascript" charset="utf-8">
     // If we're online, and the server has fresher data than we do in our app cache,
     // serve it up!
-    new CacheManager('#tartans_page').ensureFreshContent('ul[data-role="listview"]', 'inc/list.php');
+    $(function () {
+      new CacheManager('#tartans_page').ensureFreshContent('ul[data-role="listview"]', 'inc/list.php');
+    });
   </script>
 
 

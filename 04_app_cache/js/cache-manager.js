@@ -10,7 +10,6 @@
     this.content   = $(selector);
     this.updateURL = updateURL;
     this.page.live('pageshow', $.proxy(this.checkCache, this));
-    this.checkCache();
   };
 
   proto.checkCache = function () {
@@ -41,32 +40,26 @@
 
     // Kick off the update
     appCache.update();
-  }
+  };
 
   proto.showCached = function (evt) {
     this.content.show();
     $.mobile.hidePageLoadingMsg();
-  }
+  };
 
   proto.updateCache = function (evt) {
     var self = this;
 
-    window.applicationCache.swapCache();
-    // .swapCache() has retrieved the updated MANIFEST,
-    // but we still need to retrieve the updated resource.
-    // AJAX request to get updated dynamic data.
-    // This will only get fresh data if the manifest
-    // has been updated.
-  console.log(self)
-  console.log(self.updateURL)
+    // try {
+    //   window.applicationCache.swapCache();
+    // } catch (e) {}
+
+    // AJAX request to get updated dynamic data
     $.get(self.updateURL, function(data) {
-      self.content.html(data).show();
-      self.content.listview('refresh');
+      self.content.html(data).show().listview('refresh');
       $.mobile.hidePageLoadingMsg();    
     });
-
-
-  }
+  };
 
   CacheManager.prototype = proto;
 
