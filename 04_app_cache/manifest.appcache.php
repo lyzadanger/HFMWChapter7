@@ -13,8 +13,11 @@ http://code.jquery.com/mobile/1.0rc1/images/icons-18-white.png
 http://code.jquery.com/mobile/1.0rc1/images/icons-18-black.png
 http://code.jquery.com/mobile/1.0rc1/images/icons-36-white.png
 http://code.jquery.com/mobile/1.0rc1/images/icons-36-black.png
-js/cache-manager.js
+
+index.php
+tartans.php
 css/styles.css
+js/cache-manager.js
 
 <?php
 require_once('config.php');

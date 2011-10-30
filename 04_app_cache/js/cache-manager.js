@@ -44,6 +44,7 @@
 
   proto.showCached = function (evt) {
     this.content.show();
+    //.listview('refresh')
     $.mobile.hidePageLoadingMsg();
   };
 
@@ -56,8 +57,8 @@
 
     // AJAX request to get updated dynamic data
     $.get(self.updateURL, function(data) {
-      self.content.html(data).show().listview('refresh');
       $.mobile.hidePageLoadingMsg();    
+      self.content.html(data).show();
     });
   };
 
