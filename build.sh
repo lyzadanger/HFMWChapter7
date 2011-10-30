@@ -10,7 +10,7 @@ mkdir -p tartans/data
 chmod -R g+w tartans
 cp -LR ../01_js_enhancement/* .
 # This is verbose; sorry. I'm just trying to be explicit so I save my own sanity.
-mkdir extras/scripts
+mkdir -p extras/scripts
 cp ../Tartanator/config.php extras
 cp ../Tartanator/generate.php extras/scripts
 cp ../Tartanator/image.php extras/scripts
