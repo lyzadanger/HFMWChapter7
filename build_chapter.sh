@@ -13,3 +13,8 @@ cp ../02_server_enhancement/tartans.php .
 # Need to be explicit so I don't forget what I'm doing
 cp ../03_cache_manifest/*.php .
 mv tartan-template.php tartans
+
+# Step 4
+# Repetitive; ditto.
+cp ../04_app_cache/*.php .
+cp ../04_app_cache/js/*.js ./js
