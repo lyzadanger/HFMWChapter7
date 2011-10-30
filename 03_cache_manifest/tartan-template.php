@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html manifest="manifest.appcache.php"> 
+<html manifest="<?php echo TARTAN_DOC_ROOT ?>/manifest.appcache.php"> 
 	<head> 
 	<title><?php print $this->name ?>: The Tartanator</title> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
