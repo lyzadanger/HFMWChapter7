@@ -9,4 +9,7 @@ cp ../02_server_enhancement/build.php .
 cp ../02_server_enhancement/tartans.php .
 
 # Step 3
-cp ../03_cache_manifest/manifest.appcache.php .
+# Yes, some of this is repetitive; it's puposeful
+# Need to be explicit so I don't forget what I'm doing
+cp ../03_cache_manifest/*.php .
+mv tartan-template.php tartans
