@@ -17,6 +17,6 @@ cp ../Tartanator/image.php extras/scripts
 cp -R ../Tartanator/inc extras/scripts
 cp -LR ../Tartanator/js extras
 cp -LR ../Tartanator/css extras
-cp ../Tartanator/tartans/tartan-template.php tartans
+cp ../02_server_enhancement/tartan-template.php tartans
 cd ..
 zip -qr chapter7.zip chapter7

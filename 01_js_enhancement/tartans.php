@@ -21,7 +21,7 @@
 <div data-role="page">
 
 	<div data-role="header" data-position="fixed">
-		<h1>Popular Tartans</h1>
+		<h1>Tartans</h1>
 		<a href="build.php" data-role="button" data-icon="plus" class="ui-btn-right" data-theme="b">Create</a>
 	</div><!-- /header -->
 
