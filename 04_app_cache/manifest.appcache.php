@@ -22,7 +22,7 @@ $tartans = array();
 if (is_dir($dir)) {
   if ($dh = opendir($dir)) {
     while (($file = readdir($dh)) !== false) {
-      if (filetype($dir . $file) === 'file' && strpos($file, '-160.png') !== FALSE) {
+      if (filetype($dir . $file) === 'file' && strpos($file, '-200.png') !== FALSE) {
         print PUBLIC_TARTAN_DIR . 'images/' . $file . "\r\n";
       }
     }
