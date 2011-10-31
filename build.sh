@@ -15,6 +15,7 @@ cp ../Tartanator/config.php extras
 cp ../Tartanator/generate.php extras/scripts
 cp ../Tartanator/image.php extras/scripts
 cp -R ../Tartanator/inc extras/scripts
+cp -R ../Tartanator/dialogs .
 cp -LR ../Tartanator/js extras
 cp -LR ../Tartanator/css extras
 cp ../02_server_enhancement/tartan-template.php tartans
