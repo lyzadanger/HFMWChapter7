@@ -1,5 +1,18 @@
 #!/bin/sh
 
+if [ -e chapter7 ]
+then
+  if [ -e chapter7/tartans ]
+  then
+    cp -R chapter7/tartans .
+  fi
+  rm -rf chapter7
+  if [ -e tartans ]
+  then
+    mv tartans chapter7
+  fi
+fi
+
 mkdir -p chapter7
 cd chapter7
 mkdir -p extras
@@ -20,5 +33,7 @@ cp -LR ../Tartanator/js extras
 cp -LR ../Tartanator/css extras
 cp ../03_cache_manifest/current_file_list.txt extras
 cp ../02_server_enhancement/tartan-template.php tartans
+cp ../04_app_cache/js/cache-manager.js extras/js
+
 cd ..
 zip -qr chapter7.zip chapter7
