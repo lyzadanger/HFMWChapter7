@@ -1,6 +1,6 @@
-(function (context) {
+(function () {
   
-  var CacheManager = context.CacheManager = function (pageSelector) {
+  var CacheManager = window.CacheManager = function (pageSelector) {
     this.page = $(pageSelector);
   };
 
@@ -13,9 +13,6 @@
   };
 
   proto.checkCache = function () {
-    // Note that we could (TODO) implement some sort of caching solution using
-    // various local storage mechanisms for browsers that support, say,
-    // IE User Data, but not HTML5 cache manifests
     var appCache = window.applicationCache,
         showCached;
 
@@ -25,7 +22,6 @@
     showCached = $.proxy(this.showCached, this);
 
     // Otherwise, hide the content until we know we have the latest
-    // (TODO: display a loading indicator)
     $.mobile.showPageLoadingMsg();
     $(this.selector).hide();
 
@@ -68,4 +64,4 @@
 
   CacheManager.prototype = proto;
 
-}(this));
+}());
