@@ -7,7 +7,7 @@
   var proto = {};
 
   proto.ensureFreshContent = function (selector, updateURL) {
-    this.content   = $(selector);
+    this.selector  = selector;
     this.updateURL = updateURL;
     this.page.live('pageshow', $.proxy(this.checkCache, this));
   };
@@ -27,39 +27,43 @@
     // Otherwise, hide the content until we know we have the latest
     // (TODO: display a loading indicator)
     $.mobile.showPageLoadingMsg();
-    this.content.hide();
+    $(this.selector).hide();
 
-    // If there's nothing to update, we'll show the cached version
-    appCache.addEventListener('cached', showCached, false);
-    appCache.addEventListener('error', showCached, false);
-    appCache.addEventListener('noupdate', showCached, false);
-    appCache.addEventListener('obsolete', showCached, false);
+    if (!window.addedCacheListeners) {
+      // If there's nothing to update, we'll show the cached version
+      appCache.addEventListener('cached', showCached, false);
+      appCache.addEventListener('error', showCached, false);
+      appCache.addEventListener('noupdate', showCached, false);
+      appCache.addEventListener('obsolete', showCached, false);
 
-    // But if we recognize an update, swap out the cache & display it.
-    appCache.addEventListener('updateready', $.proxy(this.updateCache, this), false);
+      // But if we recognize an update, swap out the cache & display it.
+      appCache.addEventListener('updateready', $.proxy(this.updateCache, this), false);
+      window.addedCacheListeners = true;
+    }
 
     // Kick off the update
     appCache.update();
   };
 
   proto.showCached = function (evt) {
-    this.content.show();
-    //.listview('refresh')
+    $(this.selector).show();
     $.mobile.hidePageLoadingMsg();
   };
 
   proto.updateCache = function (evt) {
     var self = this;
 
-    // try {
-    //   window.applicationCache.swapCache();
-    // } catch (e) {}
-
     // AJAX request to get updated dynamic data
     $.get(self.updateURL, function(data) {
+      $(self.selector).html(data).show();
       $.mobile.hidePageLoadingMsg();    
-      self.content.html(data).show();
+      $(self.selector).listview().listview('refresh');
     });
+
+    try {
+      window.applicationCache.swapCache();
+    } catch (e) {}
+
   };
 
   CacheManager.prototype = proto;

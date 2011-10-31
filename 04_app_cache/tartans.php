@@ -25,11 +25,11 @@
   <script type="text/javascript" charset="utf-8">
     // If we're online, and the server has fresher data than we do in our app cache, serve it up!
     // Note that this is inside our data-role="page", so that it runs even when the page is loaded with Ajax
-    $(function () {
-      var tartanPage = $('#tartans_page');
+    var tartanPage = $('#tartans_page');
+    tartanPage.live('pageinit', function () {
       if (!tartanPage.data.cacheManager) {
         tartanPage.data.cacheManager = new CacheManager('#tartans_page');
-        tartanPage.data.cacheManager.ensureFreshContent('ul[data-role="listview"]', 'inc/list.php');
+        tartanPage.data.cacheManager.ensureFreshContent('#tartans-list', 'inc/list.php');
       }
     });
   </script>
@@ -39,7 +39,7 @@
 	</div><!-- /header -->
 
 	<div data-role="content">	
-    <ul data-role="listview" data-filter="true">
+    <ul data-role="listview" data-filter="true" id="tartans-list">
       <?php include('inc/list.php'); ?>
     </ul>
 	</div><!-- /content -->
