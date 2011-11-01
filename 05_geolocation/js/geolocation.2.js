@@ -39,5 +39,6 @@
   }
   function onGeoError(error) {
     alert(error.message);
+    $submitButton.button('enable');
   }
 })();
