@@ -18,3 +18,8 @@ mv tartan-template.php tartans
 # Repetitive; ditto.
 cp ../04_app_cache/*.php .
 cp ../04_app_cache/js/*.js ./js
+
+# Step 5
+# Indeed
+cp ../05_geolocation/findevent.php .
+cp ../05_geolocation/js/geolocation.2.js js/geolocation.js
