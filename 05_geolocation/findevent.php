@@ -91,6 +91,10 @@
         <input type="submit" value="Find Events" id="search_submit" />
       </div>
     </form>
+    
+    <ul data-role="listview" data-inset="true">
+      <?php include('inc/events.php'); ?>
+    </ul>
 
   
 	</div><!-- /content -->
