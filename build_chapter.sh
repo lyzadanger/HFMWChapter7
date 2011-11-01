@@ -22,4 +22,5 @@ cp ../04_app_cache/js/*.js ./js
 # Step 5
 # Indeed
 cp ../05_geolocation/findevent.php .
-cp ../05_geolocation/js/geolocation.2.js js/geolocation.js
+cp ../05_geolocation/js/geolocation.3.js js/geolocation.js
+cp ../05_geolocation/geolocation_error.html dialogs
