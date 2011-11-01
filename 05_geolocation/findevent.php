@@ -28,7 +28,6 @@
   <script src="http://code.google.com/apis/gears/gears_init.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/geo.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="js/geolocation.js"></script>
-    <h3>Search for Events</h3>
     <form method="get" action="<?php print $_SERVER['PHP_SELF']; ?>" id="search_form">
       <div data-role="fieldcontain">
         <label for="state_filter">Filter by State:</label>

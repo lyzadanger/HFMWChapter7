@@ -39,7 +39,7 @@
     $submitButton.button('enable');
   }
   function onGeoError(error) {
+    $('#usegeo').val('off').trigger('change');
     alert(error.message);
-    $submitButton.button('enable');
   }
 })();
