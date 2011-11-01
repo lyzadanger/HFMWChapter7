@@ -35,6 +35,8 @@ cp ../03_cache_manifest/current_file_list.txt extras
 cp ../02_server_enhancement/tartan-template.php tartans
 cp ../04_app_cache/js/cache-manager.js extras/js
 cp ../05_geolocation/js/geo.js extras/js
+mkdir -p extras/events
+cp ../05_geolocation/event* extras/events
 
 cd ..
 zip -qr chapter7.zip chapter7

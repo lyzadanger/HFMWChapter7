@@ -25,3 +25,4 @@ cp ../05_geolocation/findevent.php .
 cp ../05_geolocation/js/geolocation.4.js js/geolocation.js
 cp ../05_geolocation/js/geo.js js
 cp ../05_geolocation/geolocation_error.html dialogs
+cp ../05_geolocation/event* inc
