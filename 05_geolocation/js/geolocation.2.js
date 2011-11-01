@@ -28,6 +28,7 @@
       navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
     } else {
       $stateFilter.selectmenu('enable');
+      $submitButton.button('enable');
     }
   }
   function onGeoSuccess(position) {
