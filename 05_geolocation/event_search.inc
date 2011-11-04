@@ -55,12 +55,18 @@ class TartanatorEventSearch {
   public function search() {
     if ($this->isSearch()) {
       foreach($this->events as &$event) {
-        $event_point = array('latitude' => (float) $event['latitude'], 'longitude' => (float) $event['longitude']);
-        $distance = $this->get_distance($this->point, $event_point);
-        $event['distance_formatted'] = sprintf('%d miles', self::pretty($distance));
-        $event['distance'] = $distance;
-        if ($distance <= $this->radius) {
-          $this->matchingEvents[] = $event;
+        if ($this->searchType == 'state') {
+          if ($event['state'] == $this->state) {
+            $this->matchingEvents[] = $events;
+          }
+        } else if ($this->searchType == 'radius') {
+          $event_point = array('latitude' => (float) $event['latitude'], 'longitude' => (float) $event['longitude']);
+          $distance = $this->get_distance($this->point, $event_point);
+          $event['distance_formatted'] = sprintf('%d miles', self::pretty($distance));
+          $event['distance'] = $distance;
+          if ($distance <= $this->radius) {
+            $this->matchingEvents[] = $event;
+          }
         }
       }
     }
