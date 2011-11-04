@@ -1,6 +1,12 @@
 (function () {
   var $page, $searchForm, $submitButton, $stateFilter;
-  $('[data-role="page"]').live('pagecreate', initGeo);
+
+  $page = $('#event_page');
+  if (!$page.data.initialized) {
+    $page.live('pagecreate', initGeo);
+    $page.data.initialized = true;
+  }
+
   function initGeo() {
     $searchForm = $('#search_form');
     $submitButton = $('#search_submit');

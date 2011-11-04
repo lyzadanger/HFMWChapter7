@@ -19,7 +19,7 @@
 </head> 
 <body> 
 
-<div data-role="page">
+<div data-role="page" id="event_page">
 	<div data-role="header" data-position="fixed">
 		<h1>Find Events</h1>
 	</div><!-- /header -->
