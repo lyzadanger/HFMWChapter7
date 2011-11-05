@@ -28,7 +28,7 @@
   <script src="http://code.google.com/apis/gears/gears_init.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/geo.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="js/geolocation.js"></script>
-    <form method="get" action="<?php print $_SERVER['PHP_SELF']; ?>" id="search_form">
+    <form method="get" action="events.php" id="search_form">
       <div data-role="fieldcontain">
         <label for="state_filter">Filter by State:</label>
         <select id="state_filter">
@@ -92,11 +92,6 @@
       </div>
     </form>
     
-    <ul data-role="listview" data-inset="true">
-      <?php include('inc/events.php'); ?>
-    </ul>
-
-  
 	</div><!-- /content -->
 
 	<div data-role="footer" data-position="fixed">
