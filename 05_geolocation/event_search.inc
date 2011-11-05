@@ -57,7 +57,7 @@ class TartanatorEventSearch {
       foreach($this->events as &$event) {
         if ($this->searchType == 'state') {
           if ($event['state'] == $this->state) {
-            $this->matchingEvents[] = $events;
+            $this->matchingEvents[] = $event;
           }
         } else if ($this->searchType == 'radius') {
           $event_point = array('latitude' => (float) $event['latitude'], 'longitude' => (float) $event['longitude']);
