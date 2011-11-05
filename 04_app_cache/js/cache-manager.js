@@ -7,57 +7,67 @@
   var proto = {};
 
   proto.ensureFreshContent = function (selector, updateURL) {
-    var appCache = window.applicationCache,
-        showCached;
-
-    // If browser doesn't support cache manifest, move along.
-    if (!appCache) return;
+    if (!window.applicationCache) return;
 
     this.selector  = selector;
     this.updateURL = updateURL;
     
-    showCached = $.proxy(this.showCached, this);
+    this.addAppCacheListeners();
     
-    // If there's nothing to update, we'll show the cached version
+    this.page.live('pageshow', $.proxy(this.checkCache, this));
+  };
+
+  proto.addAppCacheListeners = function () {
+    var appCache = window.applicationCache,
+        showCached = $.proxy(this.showCached, this);
+    
+    // If there's nothing to update, we'll show the cached version.
+    // Note that a couple of these might fire, but in our case
+    // there's no real harm in calling the handler multiple times.
     appCache.addEventListener('cached', showCached, false);
     appCache.addEventListener('error', showCached, false);
     appCache.addEventListener('noupdate', showCached, false);
     appCache.addEventListener('obsolete', showCached, false);
 
-    // But if we recognize an update, swap out the cache & display it.
+    // But! If we recognize an update, swap out the cache & display it.
     appCache.addEventListener('updateready', $.proxy(this.updateCache, this), false);
-    
-    this.page.live('pageshow', $.proxy(this.checkCache, this));
+
+    // Bear with us... 
+    // This works around problems with the listeners & jQM on some devices.
+    // See also note in checkCache()
+    appCache.__listenersAdded = true;
+
   };
 
   proto.checkCache = function () {
-    // Hide the content until we know we have the latest
-    $.mobile.showPageLoadingMsg();
-    $(this.selector).hide();
+    var appCache = window.applicationCache;
+    
+    // See note above in addAppCacheListeners()
+    // On some devices, with jQM, the applicationCache object appears to be overridden
+    // when new pages are initted. So we'll need to re-register the listeners.
+    // Though not ideal, we check this by glomming on to the applicationCache object.
+    if (!appCache.__listenersAdded) this.addAppCacheListeners();
 
     try {
-      // Kick off the update
-      window.applicationCache.update();
-      // Android browser may not fire event on appCache,
-      // depending which page was loaded in jQM. Workaround until a fix found:
-      this.updateCacheTimer = setTimeout($.proxy(this.updateCache, this), 10000);
+      if (appCache.status != appCache.UNCACHED) {
+        // Hide the content until we know we have the latest
+        $.mobile.showPageLoadingMsg();
+        $(this.selector).hide();
+        appCache.update();
+      }
     } catch (e) {
       // If it failed, just show the cached data.
-      // We could call this.updateCache() here, but this may fire on first load.
       this.showCached();
     }
   };
 
   proto.showCached = function (evt) {
-    clearTimeout(this.updateCacheTimer);
     $(this.selector).show();
     $.mobile.hidePageLoadingMsg();
   };
 
   proto.updateCache = function (evt) {
     var self = this;
-
-    clearTimeout(this.updateCacheTimer);
 
     // AJAX request to get updated dynamic data
     $.get(self.updateURL, function(data) {
