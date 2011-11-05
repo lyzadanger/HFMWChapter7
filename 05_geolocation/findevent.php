@@ -31,7 +31,7 @@
     <form method="get" action="events.php" id="search_form">
       <div data-role="fieldcontain">
         <label for="state_filter">Filter by State:</label>
-        <select id="state_filter">
+        <select id="state_filter" name="state_filter">
           <option value="">Choose State</option>
           <option value="AL">Alabama</option> 
           <option value="AK">Alaska</option> 
