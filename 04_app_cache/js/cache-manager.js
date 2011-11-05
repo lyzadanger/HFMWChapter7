@@ -38,7 +38,11 @@
     }
 
     // Kick off the update
-    appCache.update();
+    try {
+      appCache.update();
+    } catch (e) {
+      this.updateCache();
+    }
   };
 
   proto.showCached = function (evt) {
