@@ -35,9 +35,12 @@
     $.mobile.showPageLoadingMsg();
     $(this.selector).hide();
 
-    // Kick off the update
     try {
+      // Kick off the update
       window.applicationCache.update();
+      // Android browser may not fire event on appCache,
+      // depending which page was loaded in jQM. Workaround until a fix found:
+      this.updateCacheTimer = setTimeout($.proxy(this.updateCache, this), 10000);
     } catch (e) {
       // If it failed, just show the cached data.
       // We could call this.updateCache() here, but this may fire on first load.
@@ -46,12 +49,15 @@
   };
 
   proto.showCached = function (evt) {
+    clearTimeout(this.updateCacheTimer);
     $(this.selector).show();
     $.mobile.hidePageLoadingMsg();
   };
 
   proto.updateCache = function (evt) {
     var self = this;
+
+    clearTimeout(this.updateCacheTimer);
 
     // AJAX request to get updated dynamic data
     $.get(self.updateURL, function(data) {

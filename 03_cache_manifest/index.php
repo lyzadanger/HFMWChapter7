@@ -3,7 +3,7 @@
 	<head> 
 	<meta charset="UTF-8" />
 	<title>The Tartanator</title> 
-  <meta charset="UTF-8" />
+
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.css" />
   <link rel="stylesheet" href="css/styles.css" />
