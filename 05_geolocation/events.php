@@ -19,7 +19,7 @@
 </head> 
 <body>
   
-  <div data-role="page" id="event_page">
+  <div data-role="page">
     <div data-role="header" data-position="fixed">
       <a href="tartans.html" data-rel="back" data-icon="back" data-role="button">Back</a>
       <h1>Events</h1>
