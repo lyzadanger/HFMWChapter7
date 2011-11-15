@@ -20,11 +20,10 @@ mkdir -p js
 mkdir -p tartans
 mkdir -p tartans/images
 mkdir -p tartans/data
-chmod -R g+w tartans
 cp -LR ../01_js_enhancement/* .
 # This is verbose; sorry. I'm just trying to be explicit so I save my own sanity.
 mkdir -p extras/scripts
-cp ../Tartanator/config.php extras
+cp ../Tartanator/config.php extras/scripts
 cp ../Tartanator/generate.php extras/scripts
 cp ../Tartanator/image.php extras/scripts
 cp -R ../Tartanator/inc extras/scripts
@@ -38,6 +37,8 @@ cp ../05_geolocation/js/geolocation.2.js extras/js/enhanced_geo_form.js
 cp ../05_geolocation/js/geo.js extras/js
 mkdir -p extras/events
 cp ../05_geolocation/event* extras/events
+cp ../05_geolocation/us_states.txt extras/events
+chmod -R g+w tartans
 
 cd ..
 zip -qr chapter7.zip chapter7

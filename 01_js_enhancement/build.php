@@ -25,7 +25,7 @@
 
     <div data-role="content">  
     <script src="js/tartanator.js"></script>
-      <form id="tartanator_form">
+      <form id="tartanator_form" action="generate.php" method="post">
         <ul data-role="listview" id="tartanator_form_list">
           <li data-role="list-divider">Tell us about your tartan</li>
           <li data-role="fieldcontain">

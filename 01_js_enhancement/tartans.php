@@ -19,7 +19,7 @@
 </head> 
 <body> 
 
-<div data-role="page">
+<div data-role="page" id="tartans_page">
 
 	<div data-role="header" data-position="fixed">
 		<h1>Tartans</h1>
