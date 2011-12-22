@@ -39,6 +39,3 @@ mkdir -p extras/events
 cp ../05_geolocation/event* extras/events
 cp ../05_geolocation/us_states.txt extras/events
 chmod -R g+w tartans
-
-cd ..
-zip -qr chapter7.zip chapter7
