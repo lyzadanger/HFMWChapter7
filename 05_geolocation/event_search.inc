@@ -55,6 +55,8 @@ class TartanatorEventSearch {
   public function search() {
     if ($this->isSearch()) {
       foreach($this->events as &$event) {
+        $event['distance_formatted'] = '';
+        $event['distance'] = 0;
         if ($this->searchType == 'state') {
           if ($event['state'] == $this->state) {
             $this->matchingEvents[] = $event;
